@@ -1,0 +1,675 @@
+<!DOCTYPE html>  <html lang="pt-BR">  <head>  <meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Projeto Ascensão</title>  <style>  
+  
+*{  
+margin:0;  
+padding:0;  
+box-sizing:border-box;  
+font-family:Arial,Helvetica,sans-serif;  
+}  
+  
+body{  
+  
+background:#111;  
+color:white;  
+overflow-x:hidden;  
+  
+}  
+  
+header{  
+  
+background:#191919;  
+border-bottom:3px solid #d4af37;  
+padding:25px;  
+text-align:center;  
+box-shadow:0 5px 20px rgba(0,0,0,.5);  
+  
+}  
+  
+header h1{  
+  
+font-size:42px;  
+color:#d4af37;  
+  
+}  
+  
+header h2{  
+  
+font-size:20px;  
+margin-top:5px;  
+font-weight:normal;  
+  
+}  
+  
+header p{  
+  
+margin-top:12px;  
+color:#ccc;  
+font-style:italic;  
+  
+}  
+  
+main{  
+  
+display:flex;  
+justify-content:center;  
+gap:25px;  
+padding:25px;  
+flex-wrap:wrap;  
+  
+}  
+  
+.esquerda{  
+  
+width:420px;  
+  
+}  
+  
+.direita{  
+  
+width:350px;  
+  
+}  
+  
+.card{  
+  
+background:#1b1b1b;  
+border:2px solid #d4af37;  
+border-radius:18px;  
+padding:20px;  
+margin-bottom:20px;  
+box-shadow:0 0 20px rgba(212,175,55,.15);  
+  
+}  
+  
+.card h2{  
+  
+margin-bottom:15px;  
+color:#d4af37;  
+  
+}  
+  
+.botaoFlexao{  
+  
+width:300px;  
+height:300px;  
+border-radius:50%;  
+border:none;  
+cursor:pointer;  
+  
+background:  
+linear-gradient(  
+180deg,  
+#f4d35e,  
+#d4af37,  
+#9e7a00  
+);  
+  
+color:white;  
+  
+font-size:38px;  
+font-weight:bold;  
+  
+transition:.15s;  
+  
+box-shadow:  
+0 0 35px rgba(212,175,55,.35);  
+  
+}  
+  
+.botaoFlexao:hover{  
+  
+transform:scale(1.05);  
+  
+}  
+  
+.botaoFlexao:active{  
+  
+transform:scale(.95);  
+  
+}  
+  
+.barra{  
+  
+width:100%;  
+height:28px;  
+background:#333;  
+border-radius:20px;  
+overflow:hidden;  
+margin-top:10px;  
+  
+}  
+  
+.progresso{  
+  
+height:100%;  
+width:0%;  
+background:  
+  
+linear-gradient(  
+90deg,  
+gold,  
+orange  
+);  
+  
+transition:.3s;  
+  
+}  
+  
+.stat{  
+  
+margin:12px 0;  
+font-size:20px;  
+  
+}  
+  
+button{  
+  
+background:#d4af37;  
+color:black;  
+  
+border:none;  
+  
+padding:12px 20px;  
+  
+border-radius:10px;  
+  
+cursor:pointer;  
+  
+font-size:18px;  
+  
+transition:.2s;  
+  
+}  
+  
+button:hover{  
+  
+transform:scale(1.05);  
+  
+}  
+  
+#abrirLoja{  
+  
+width:100%;  
+  
+}  
+  
+.loja{  
+  
+position:fixed;  
+  
+top:0;  
+right:-420px;  
+  
+width:400px;  
+height:100vh;  
+  
+background:#181818;  
+  
+border-left:3px solid gold;  
+  
+padding:25px;  
+  
+transition:.35s;  
+  
+overflow:auto;  
+  
+z-index:999;  
+  
+}  
+  
+.loja.ativa{  
+  
+right:0;  
+  
+}  
+  
+.itemLoja{  
+  
+background:#262626;  
+  
+border-radius:15px;  
+  
+padding:15px;  
+  
+margin-bottom:15px;  
+  
+border:1px solid #444;  
+  
+}  
+  
+.itemLoja h3{  
+  
+color:gold;  
+  
+margin-bottom:10px;  
+  
+}  
+  
+.fechar{  
+  
+background:#b22222;  
+color:white;  
+width:100%;  
+  
+margin-top:20px;  
+  
+}  
+  
+#habilidades{  
+  
+line-height:35px;  
+  
+}  
+  
+#conquistas{  
+  
+line-height:35px;  
+  
+}  
+  
+#stats{  
+  
+line-height:30px;  
+  
+}  
+  
+footer{  
+  
+margin-top:40px;  
+  
+padding:25px;  
+  
+text-align:center;  
+  
+color:#666;  
+  
+}  
+  
+@media(max-width:900px){  
+  
+main{  
+  
+flex-direction:column;  
+align-items:center;  
+  
+}  
+  
+.esquerda,  
+.direita{  
+  
+width:95%;  
+  
+}  
+  
+.botaoFlexao{  
+  
+width:250px;  
+height:250px;  
+  
+font-size:32px;  
+  
+}  
+  
+.loja{  
+  
+width:100%;  
+  
+}  
+  
+}  
+  
+</style>  </head>  <body>  <header>  <h1>⚔ Projeto Ascensão</h1>  <h2>Davi Henrique</h2>  <p>  "There's a million things I haven't done,
+but just you wait."
+
+</p>  </header>  <main>  <div class="esquerda">  <div class="card">  <h2>Treino</h2>  <div style="text-align:center">  <button
+
+class="botaoFlexao"
+
+onclick="flexao()"
+
+> 
+
+💪
+
+<br>  FLEXÃO
+
+</button>  </div>  <br>  <div class="stat">  Flexões:
+
+<span id="flexoes">  0
+
+</span>  </div>  </div><div class="direita">  <div class="card">  <h2>📊 Status</h2>  <p class="stat">  
+🪙 Moedas:  
+<span id="moedas">0</span>  
+</p>  <p class="stat">  
+⭐ XP:  
+<span id="xp">0</span>  
+</p>  <p class="stat">  
+📈 Nível:  
+<span id="nivel">1</span>  
+</p>  <h3>Progresso do nível</h3>  <div class="barra">  <div   
+class="progresso"  
+id="barraXP">  </div>  </div>  <p>  <span id="xpAtual">0</span>
+/
+100 XP
+
+</p>  </div>  <div class="card">  <h2>🔓 Habilidades</h2>  <p id="habilidades">  🦵 Agachamento
+
+</p>  </div>  <div class="card">  <h2>🏆 Conquistas</h2>  <p id="conquistas">  Nenhuma ainda
+
+</p>  </div>  <div class="card">  <h2>📜 Estatísticas</h2>  <p id="stats">  Flexões totais: 0
+
+<br>  Compras: 0
+
+</p>  </div>  </div>  </main>  <button
+
+id="abrirLoja"
+
+onclick="abrirLoja()"
+
+> 
+
+🛒 Abrir Loja
+
+</button>  <div class="loja" id="loja">  <h2>🛒 Loja</h2>  <div class="itemLoja">  <h3>🍫 Chocolate</h3>  <p>  Aumenta sua energia.
+
+</p>  <button onclick="comprar('Chocolate',20)">  Comprar - 20 🪙
+
+</button>  </div>  <div class="itemLoja">  <h3>🍰 Bolo</h3>  <p>  Recompensa especial.
+
+</p>  <button onclick="comprar('Bolo',50)">  Comprar - 50 🪙
+
+</button>  </div>  <div class="itemLoja">  <h3>🍕 Pizza</h3>  <p>  Grande recompensa.
+
+</p>  <button onclick="comprar('Pizza',100)">  Comprar - 100 🪙
+
+</button>  </div>  <button
+
+class="fechar"
+
+onclick="fecharLoja()"
+
+> 
+
+❌ Fechar
+
+</button>  </div>  <footer>  Projeto Ascensão © 2026
+
+<br>  Construindo meu legado.
+
+</footer><script>  let jogo = {
+
+moedas:0,  
+xp:0,  
+nivel:1,  
+flexoes:0,  
+compras:[],  
+conquistas:[],  
+historico:[]
+
+};
+
+function salvar(){
+
+localStorage.setItem(  
+    "ascensaoSave",  
+    JSON.stringify(jogo)  
+);
+
+}
+
+function carregar(){
+
+let save = localStorage.getItem(  
+    "ascensaoSave"  
+);  
+
+
+if(save){  
+
+    jogo = JSON.parse(save);  
+
+}
+
+}
+
+function mostrarTexto(texto){
+
+jogo.historico.unshift(texto);  
+
+
+if(jogo.historico.length > 5){  
+
+    jogo.historico.pop();  
+
+}
+
+}
+
+function flexao(){
+
+jogo.flexoes++;  
+
+jogo.moedas++;  
+
+jogo.xp += 2;  
+
+
+mostrarTexto(  
+    "💪 Fez uma flexão (+2 XP)"  
+);  
+
+
+verificarNivel();  
+
+verificarConquistas();  
+
+salvar();  
+
+atualizar();
+
+}
+
+function verificarNivel(){
+
+let novoNivel =   
+Math.floor(jogo.xp / 100)+1;  
+
+
+
+if(novoNivel > jogo.nivel){  
+
+
+    jogo.nivel = novoNivel;  
+
+
+    alert(  
+    "🎉 Você alcançou o nível "  
+    + jogo.nivel  
+    );  
+
+
+
+    mostrarTexto(  
+    "⭐ Subiu para nível "  
+    + jogo.nivel  
+    );  
+
+
+}
+
+}
+
+function comprar(nome,preco){
+
+if(jogo.moedas >= preco){  
+
+
+    jogo.moedas -= preco;  
+
+
+    jogo.compras.push(nome);  
+
+
+
+    mostrarTexto(  
+    "🛒 Comprou "+nome  
+    );  
+
+
+}  
+
+
+else{  
+
+
+    alert(  
+    "Moedas insuficientes!"  
+    );  
+
+
+}  
+
+
+
+salvar();  
+
+atualizar();
+
+}
+
+function abrirLoja(){
+
+document  
+.getElementById("loja")  
+.classList.add("ativa");
+
+}
+
+function fecharLoja(){
+
+document  
+.getElementById("loja")  
+.classList.remove("ativa");
+
+}
+
+function verificarConquistas(){
+
+if(  
+jogo.flexoes >= 10 &&  
+!jogo.conquistas.includes(  
+"Primeiro treino"  
+)  
+){  
+
+    jogo.conquistas.push(  
+    "🥉 Primeiro treino"  
+    );  
+
+}  
+
+
+
+if(  
+jogo.flexoes >= 100 &&  
+!jogo.conquistas.includes(  
+"100 flexões"  
+)  
+){  
+
+    jogo.conquistas.push(  
+    "💪 100 flexões"  
+    );  
+
+}
+
+}
+function atualizar(){
+
+document.getElementById("moedas")
+.innerHTML = jogo.moedas;
+
+document.getElementById("xp")
+.innerHTML = jogo.xp;
+
+document.getElementById("nivel")
+.innerHTML = jogo.nivel;
+
+document.getElementById("flexoes")
+.innerHTML = jogo.flexoes;
+
+// Barra de XP
+
+let xpAtual = jogo.xp % 100;
+
+document.getElementById("barraXP")
+.style.width = xpAtual + "%";
+
+document.getElementById("xpAtual")
+.innerHTML = xpAtual;
+
+// Habilidades
+
+let habilidades = "";
+
+if(jogo.nivel >= 1){
+
+habilidades +=   
+"🦵 Agachamento<br>";
+
+}
+
+if(jogo.nivel >= 2){
+
+habilidades +=   
+"💪 Flexão avançada<br>";
+
+}
+
+if(jogo.nivel >= 5){
+
+habilidades +=   
+"🔥 Burpee<br>";
+
+}
+
+if(jogo.nivel >= 10){
+
+habilidades +=   
+"⚔️ Flexão explosiva<br>";
+
+}
+
+document.getElementById("habilidades")
+.innerHTML = habilidades;
+
+// Conquistas
+
+document.getElementById("conquistas")
+.innerHTML =
+
+jogo.conquistas.join("<br>")
+
+|| "Nenhuma ainda";
+
+// Estatísticas
+
+document.getElementById("stats")
+.innerHTML =
+
+"Flexões totais: "
++jogo.flexoes
+
++"<br>Compras: "
++jogo.compras.length;
+
+}
+
+alert("Funcionou");
+
+carregar();
+
+atualizar();
+
+</script>  </body>  </html> 
