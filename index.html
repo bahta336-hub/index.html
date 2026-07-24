@@ -666,9 +666,26 @@ document.getElementById("stats")
 
 }
 
-alert("Funcionou");
+function carregar(){
 
-carregar();
+    let save = localStorage.getItem("ascensaoSave");
+
+    if(save){
+
+        jogo = JSON.parse(save);
+
+    }
+
+    // garante que tudo existe
+    jogo.moedas ??= 0;
+    jogo.xp ??= 0;
+    jogo.nivel ??= 1;
+    jogo.flexoes ??= 0;
+    jogo.compras ??= [];
+    jogo.conquistas ??= [];
+    jogo.historico ??= [];
+
+}
 
 atualizar();
 
