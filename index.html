@@ -708,18 +708,20 @@ let progresso = {
   xp: 0
 };
 
-// Salvar
+// Carregar dados
+let jogo = JSON.parse(localStorage.getItem("save"));
+
+if (!jogo) {
+    jogo = {
+        moedas: 0,
+        nivel: 1,
+        xp: 0
+    };
+}
+
+// Salvar dados
 function salvar() {
-  localStorage.setItem("projetoAscensao", JSON.stringify(progresso));
-}
-
-// Carregar
-function carregar() {
-  const save = localStorage.getItem("projetoAscensao");
-  if (save) {
-    progresso = JSON.parse(save);
-  }
-}
-
+    localStorage.setItem("save", JSON.stringify(jogo));
+  
 carregar();
 </script>  </body>  </html> 
