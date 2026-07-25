@@ -701,5 +701,25 @@ atualizar();
 }
 
 atualizar();
+// Dados do jogo
+let progresso = {
+  nivel: 1,
+  moedas: 0,
+  xp: 0
+};
 
+// Salvar
+function salvar() {
+  localStorage.setItem("projetoAscensao", JSON.stringify(progresso));
+}
+
+// Carregar
+function carregar() {
+  const save = localStorage.getItem("projetoAscensao");
+  if (save) {
+    progresso = JSON.parse(save);
+  }
+}
+
+carregar();
 </script>  </body>  </html> 
